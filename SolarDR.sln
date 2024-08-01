@@ -18,6 +18,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarDR.Application", "Sola
 		{B7DA9FE3-845C-4A08-A10D-47001650AA52} = {B7DA9FE3-845C-4A08-A10D-47001650AA52}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarDR.MVC", "SolarDR.MVC\SolarDR.MVC.csproj", "{FA80B4C5-CFF9-4C89-BEE3-0AFB0135C265}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B97A6352-34DC-4289-894B-5F3692B8286E} = {B97A6352-34DC-4289-894B-5F3692B8286E}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +41,10 @@ Global
 		{B97A6352-34DC-4289-894B-5F3692B8286E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B97A6352-34DC-4289-894B-5F3692B8286E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B97A6352-34DC-4289-894B-5F3692B8286E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA80B4C5-CFF9-4C89-BEE3-0AFB0135C265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA80B4C5-CFF9-4C89-BEE3-0AFB0135C265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA80B4C5-CFF9-4C89-BEE3-0AFB0135C265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA80B4C5-CFF9-4C89-BEE3-0AFB0135C265}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

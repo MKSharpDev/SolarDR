@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SolarDR.Infrastructure.Core\SolarDR.Infrastructure.Core.csproj" />
+  </ItemGroup>
+
 </Project>
