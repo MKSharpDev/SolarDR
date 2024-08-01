@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarDR.Domain", "SolarDR.Domain\SolarDR.Domain.csproj", "{B7DA9FE3-845C-4A08-A10D-47001650AA52}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{70A36AFA-F69D-4EEC-9345-A5BD5E72E842}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarDR.Infrastructure.Core", "SolarDR.Infrastructure.Core\SolarDR.Infrastructure.Core.csproj", "{91689376-87F4-4ECC-9BB1-C84EE972C562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarDR.Application", "SolarDR.Application\SolarDR.Application.csproj", "{B97A6352-34DC-4289-894B-5F3692B8286E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7DA9FE3-845C-4A08-A10D-47001650AA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7DA9FE3-845C-4A08-A10D-47001650AA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7DA9FE3-845C-4A08-A10D-47001650AA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7DA9FE3-845C-4A08-A10D-47001650AA52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91689376-87F4-4ECC-9BB1-C84EE972C562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91689376-87F4-4ECC-9BB1-C84EE972C562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91689376-87F4-4ECC-9BB1-C84EE972C562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91689376-87F4-4ECC-9BB1-C84EE972C562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B97A6352-34DC-4289-894B-5F3692B8286E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97A6352-34DC-4289-894B-5F3692B8286E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B97A6352-34DC-4289-894B-5F3692B8286E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97A6352-34DC-4289-894B-5F3692B8286E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{91689376-87F4-4ECC-9BB1-C84EE972C562} = {70A36AFA-F69D-4EEC-9345-A5BD5E72E842}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E15080E4-3401-483D-B162-3DFC8DD2D426}
+	EndGlobalSection
+EndGlobal
