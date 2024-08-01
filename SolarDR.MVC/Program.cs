@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using SolarDR.Infrastructure.Core;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var configuration = builder.Configuration;
+builder.Services.AddDbContext<AppDbContext>(
+    options => options.UseNpgsql(configuration.GetConnectionString("AppDb"),
+    x => x.MigrationsAssembly("SolarDR.Infrastructure.Core")));
 
 var app = builder.Build();
 
