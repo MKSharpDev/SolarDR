@@ -8,8 +8,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{70A36AFA-F69D-4EEC-9345-A5BD5E72E842}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarDR.Infrastructure.Core", "SolarDR.Infrastructure.Core\SolarDR.Infrastructure.Core.csproj", "{91689376-87F4-4ECC-9BB1-C84EE972C562}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7DA9FE3-845C-4A08-A10D-47001650AA52} = {B7DA9FE3-845C-4A08-A10D-47001650AA52}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolarDR.Application", "SolarDR.Application\SolarDR.Application.csproj", "{B97A6352-34DC-4289-894B-5F3692B8286E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{91689376-87F4-4ECC-9BB1-C84EE972C562} = {91689376-87F4-4ECC-9BB1-C84EE972C562}
+		{B7DA9FE3-845C-4A08-A10D-47001650AA52} = {B7DA9FE3-845C-4A08-A10D-47001650AA52}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
