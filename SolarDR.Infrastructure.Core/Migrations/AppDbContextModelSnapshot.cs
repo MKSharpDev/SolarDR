@@ -28,8 +28,8 @@ namespace SolarDR.Infrastructure.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
 
                     b.Property<string>("LastName")
                         .IsRequired()

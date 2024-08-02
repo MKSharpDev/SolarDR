@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SolarDR.Application;
 using SolarDR.Infrastructure.Core.Contracts;
 using SolarDR.MVC.Models.PersonModel;
@@ -9,19 +8,38 @@ namespace SolarDR.MVC.Controllers
     public class PersonController : Controller
     {
         private readonly IPersonService personService;
-        private readonly IMapper mapper;
 
 
-        public PersonController(IPersonService personService, IMapper mapper)
+        public PersonController(IPersonService personService)
         {
             this.personService = personService;
-            this.mapper = mapper;
+
         }
 
         public async Task<ActionResult> Index()
         {
             var persons = await personService.Get(HttpContext.RequestAborted);
-            return View(mapper.Map<ICollection<PersonResponse>>(persons));
+
+            List<PersonResponse> result = new List<PersonResponse>();
+
+
+            foreach (var person in persons)
+            {
+                PersonResponse personDTO = new PersonResponse()
+                {
+                    Id = person.Id,
+                    Name = person.Name,
+                    LastName = person.LastName,
+                    Date = person.Date
+                };
+                result.Add(personDTO);
+            }
+
+            return View(result);
+        }
+        public ActionResult Create()
+        { 
+            return View();
         }
 
         [HttpPost]
@@ -40,7 +58,7 @@ namespace SolarDR.MVC.Controllers
                         Id = Guid.NewGuid(),
                         Name = name,
                         LastName = lastName,
-                        Date = DateTime.Parse(date)
+                        Date = DateOnly.Parse(date)
                     };
                     var resultPersonDTO = await personService.CreateAsync(newPersonDTO, HttpContext.RequestAborted);
                 }

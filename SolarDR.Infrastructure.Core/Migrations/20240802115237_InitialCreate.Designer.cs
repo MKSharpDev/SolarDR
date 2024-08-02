@@ -12,7 +12,7 @@ using SolarDR.Infrastructure.Core;
 namespace SolarDR.Infrastructure.Core.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240801095701_InitialCreate")]
+    [Migration("20240802115237_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -31,8 +31,8 @@ namespace SolarDR.Infrastructure.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("Date")
+                        .HasColumnType("date");
 
                     b.Property<string>("LastName")
                         .IsRequired()
