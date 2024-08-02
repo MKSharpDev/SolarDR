@@ -22,9 +22,15 @@ namespace SolarDR.Application.Services
             return mapper.Map<PersonDTO>(person);
         }
 
-        public Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var personFromDb = await personRepository.GetAsync(id, true, cancellationToken);
+            if (personFromDb == null)
+            {
+                throw new Exception("Нет человека с таким id");
+            }
+
+            await personRepository.DeleteAsync(id, true, cancellationToken);
         }
 
         public async Task<ICollection<PersonDTO>> Get(CancellationToken cancellationToken)
@@ -33,14 +39,30 @@ namespace SolarDR.Application.Services
             return mapper.Map<ICollection<PersonDTO>>(persons);
         }
 
-        public Task<PersonDTO> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<PersonDTO> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var personFromDb = await personRepository.GetAsync(id, true, cancellationToken);
+            if (personFromDb == null)
+            {
+                throw new Exception("Нет человека с таким id");
+            }
+
+            return mapper.Map<PersonDTO>(personFromDb);
         }
 
-        public Task<PersonDTO> UpdateAsync(PersonDTO updateDto, CancellationToken cancellationToken)
+        public async Task<PersonDTO> UpdateAsync(PersonDTO updateDto, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var personFromDb = await personRepository.GetAsync(updateDto.Id , true, cancellationToken);
+            if (personFromDb == null)
+            {
+                throw new Exception("Нет человека с таким id");
+            }
+
+            await personRepository.EditAsync(mapper.Map<Person>(updateDto), true, cancellationToken);
+
+            var result = await personRepository.GetAsync(updateDto.Id, true, cancellationToken);
+
+            return mapper.Map<PersonDTO>(result);
         }
     }
 }
