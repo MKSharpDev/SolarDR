@@ -8,6 +8,9 @@ using System.Reflection;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
 builder.Services.AddTransient<IPersonRepository, PersonRepository>();
 
 builder.Services.AddTransient<IPersonService, PersonService>();

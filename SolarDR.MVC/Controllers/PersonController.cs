@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SolarDR.Application;
 using SolarDR.Infrastructure.Core.Contracts;
 using SolarDR.MVC.Models.PersonModel;
@@ -8,34 +9,20 @@ namespace SolarDR.MVC.Controllers
     public class PersonController : Controller
     {
         private readonly IPersonService personService;
+        private readonly IMapper mapper;
 
 
-        public PersonController(IPersonService personService)
+        public PersonController(IPersonService personService, IMapper mapper)
         {
             this.personService = personService;
-
+            this.mapper = mapper;
         }
 
         public async Task<ActionResult> Index()
         {
             var persons = await personService.Get(HttpContext.RequestAborted);
 
-            List<PersonResponse> result = new List<PersonResponse>();
-
-
-            foreach (var person in persons)
-            {
-                PersonResponse personDTO = new PersonResponse()
-                {
-                    Id = person.Id,
-                    Name = person.Name,
-                    LastName = person.LastName,
-                    Date = person.Date
-                };
-                result.Add(personDTO);
-            }
-
-            return View(result);
+            return View(mapper.Map<ICollection<PersonResponse>>(persons));
         }
         public ActionResult Create()
         { 
