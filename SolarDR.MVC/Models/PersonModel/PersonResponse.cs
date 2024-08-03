@@ -1,6 +1,6 @@
-﻿namespace SolarDR.Application
+﻿namespace SolarDR.MVC.Models.PersonModel
 {
-    public class PersonDTO
+    public class PersonResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -8,4 +8,3 @@
         public DateOnly Date { get; set; }
     }
 }
- 

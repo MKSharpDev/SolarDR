@@ -1,39 +1,68 @@
-﻿using SolarDR.Infrastructure.Core.Contracts;
+﻿using AutoMapper;
+using SolarDR.Domain;
+using SolarDR.Infrastructure.Core.Contracts;
 
 namespace SolarDR.Application.Services
 {
     public class PersonService : IPersonService
     {
         private readonly IPersonRepository personRepository;
+        private readonly IMapper mapper;
 
-        public PersonService(IPersonRepository personRepository) 
+        public PersonService(IPersonRepository personRepository, IMapper mapper) 
         {
             this.personRepository = personRepository;
+            this.mapper = mapper;
         }
 
-        public Task<PersonDTO> CreateAsync(PersonDTO newBankDto, CancellationToken cancellationToken)
+        public async Task<PersonDTO> CreateAsync(PersonDTO newPersonDTO, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+
+            var person = await personRepository.AddAsync(mapper.Map<Person>(newPersonDTO), true, cancellationToken);
+            return mapper.Map<PersonDTO>(person);
         }
 
-        public Task DeleteAsync(Guid id, CancellationToken cancellationToken)
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var personFromDb = await personRepository.GetAsync(id, true, cancellationToken);
+            if (personFromDb == null)
+            {
+                throw new Exception("Нет человека с таким id");
+            }
+
+            await personRepository.DeleteAsync(id, true, cancellationToken);
         }
 
-        public Task<ICollection<PersonDTO>> Get(CancellationToken cancellationToken)
+        public async Task<ICollection<PersonDTO>> Get(CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var persons = await personRepository.GetAllAsync(true , cancellationToken);
+            return mapper.Map<ICollection<PersonDTO>>(persons);
         }
 
-        public Task<PersonDTO> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<PersonDTO> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var personFromDb = await personRepository.GetAsync(id, true, cancellationToken);
+            if (personFromDb == null)
+            {
+                throw new Exception("Нет человека с таким id");
+            }
+
+            return mapper.Map<PersonDTO>(personFromDb);
         }
 
-        public Task<PersonDTO> UpdateAsync(PersonDTO updateDto, CancellationToken cancellationToken)
+        public async Task<PersonDTO> UpdateAsync(PersonDTO updateDto, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var personFromDb = await personRepository.GetAsync(updateDto.Id , true, cancellationToken);
+            if (personFromDb == null)
+            {
+                throw new Exception("Нет человека с таким id");
+            }
+
+            await personRepository.EditAsync(mapper.Map<Person>(updateDto), true, cancellationToken);
+
+            var result = await personRepository.GetAsync(updateDto.Id, true, cancellationToken);
+
+            return mapper.Map<PersonDTO>(result);
         }
     }
 }

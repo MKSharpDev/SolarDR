@@ -30,7 +30,7 @@ namespace SolarDR.Infrastructure.Core.Implemenrations
         }
         public async Task<T> GetAsync(Guid id, bool saveChanges = true, CancellationToken cancellationToken = default)
         {
-            var result = await _dbContext.Set<T>().FirstOrDefaultAsync(e => e.Id.Equals(id), cancellationToken);
+            var result = await _dbContext.Set<T>().FindAsync(id, cancellationToken);
             return result;
         }
 
