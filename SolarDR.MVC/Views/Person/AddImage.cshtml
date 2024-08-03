@@ -1,0 +1,52 @@
+﻿@model SolarDR.MVC.Models.PersonModel.PersonResponse
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Date)
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+    <form asp-action="AddImage" asp-controller="Person" method="post" enctype="multipart/form-data">
+        <p>
+            <label>Image</label>
+            <input name="Image" type="file" class="form-control" />
+        </p>
+        <p>
+            <input type="submit" value="Добавить" />
+        </p>
+        <div>
+            @Html.HiddenFor(model => model.Id)
+        </div>
+    </form>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

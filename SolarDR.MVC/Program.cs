@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SolarDR.Application.Contracts;
 using SolarDR.Application.Services;
 using SolarDR.Infrastructure.Core;
 using SolarDR.Infrastructure.Core.Contracts;
@@ -12,8 +13,10 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Services.AddTransient<IPersonRepository, PersonRepository>();
-
 builder.Services.AddTransient<IPersonService, PersonService>();
+
+builder.Services.AddTransient<IImageRepository, ImageRepository>();
+builder.Services.AddTransient<IImageService, ImageService>();
 
 builder.Services.AddControllersWithViews();
 
