@@ -16,7 +16,6 @@ namespace SolarDR.MVC.Controllers
     {
         private readonly IPersonService personService;
         private readonly IImageService imageService;
-
         private readonly IMapper mapper;
 
         public PersonController(IPersonService personService, IMapper mapper, IImageService imageService)
@@ -71,18 +70,6 @@ namespace SolarDR.MVC.Controllers
             var images = await imageService.GetByPersonIdAsync(id, HttpContext.RequestAborted);
 
             List<ImageSimpleModel> formFiles = new List<ImageSimpleModel>();
-
-          
-            
-            //foreach (var item in images)
-            //{
-
-            //    var stream = new MemoryStream(item.bytes);
-            //    IFormFile imageData = new FormFile(stream, 0, stream.Length, "name", "fileName.png");
-
-
-            //    formFiles.Add(imageData);
-            //}
 
             PersonWithImagesResponce result = new PersonWithImagesResponce()
             {

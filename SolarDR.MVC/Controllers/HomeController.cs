@@ -1,21 +1,33 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using SolarDR.Application.Contracts;
+using SolarDR.Application.Services;
+using SolarDR.Infrastructure.Core.Contracts;
 using SolarDR.MVC.Models;
+using SolarDR.MVC.Models.PersonModel;
 using System.Diagnostics;
 
 namespace SolarDR.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> logger;
+        private readonly IPersonService personService;
+        private readonly IMapper mapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPersonService personService, IMapper mapper)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.personService = personService;
+            this.mapper = mapper;
+
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var persons = await personService.Get(HttpContext.RequestAborted);
+
+            return View(mapper.Map<ICollection<PersonResponse>>(persons));
         }
 
         public IActionResult Privacy()
