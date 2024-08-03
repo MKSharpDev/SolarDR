@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SolarDR.Application;
+using SolarDR.MVC.Models.ImageModel;
 using SolarDR.MVC.Models.PersonModel;
 
 namespace SolarDR.MVC.Mapper
@@ -9,6 +10,7 @@ namespace SolarDR.MVC.Mapper
         public MVCMapperProfile()
         {
             CreateMap<PersonDTO, PersonResponse>();
+            CreateMap<ImageDto, ImageSimpleModel>();
         }
     }
 }

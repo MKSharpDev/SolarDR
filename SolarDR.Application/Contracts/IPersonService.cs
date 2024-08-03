@@ -1,17 +1,10 @@
 ﻿using SolarDR.Application;
+using SolarDR.Application.Contracts;
 
 namespace SolarDR.Infrastructure.Core.Contracts
 {
-    public interface IPersonService
+    public interface IPersonService : IService<PersonDTO>
     {
-        public Task<ICollection<PersonDTO>> Get(CancellationToken cancellationToken);
 
-        public Task<PersonDTO> CreateAsync(PersonDTO newBankDto, CancellationToken cancellationToken);
-
-        public Task DeleteAsync(Guid id, CancellationToken cancellationToken);
-
-        public Task<PersonDTO> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-
-        public Task<PersonDTO> UpdateAsync(PersonDTO updateDto, CancellationToken cancellationToken);
     }
 }

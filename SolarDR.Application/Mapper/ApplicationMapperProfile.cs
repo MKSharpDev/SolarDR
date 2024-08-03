@@ -9,6 +9,8 @@ namespace SolarDR.Application.Mapper
         public ApplicationMapperProfile()
         {
             CreateMap<PersonDTO, Person>()
+                .ReverseMap(); 
+            CreateMap<ImageDto, Image>()
                 .ReverseMap();
         }
     }

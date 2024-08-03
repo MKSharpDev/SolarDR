@@ -1,8 +1,62 @@
-﻿@{
+﻿@model IEnumerable<SolarDR.MVC.Models.PersonModel.PersonResponse>
+
+
+@{
     ViewData["Title"] = "Home Page";
 }
+@{
+    var today = DateOnly.FromDateTime(DateTime.Now);
+    var inThisMoth = Model.Where(t=> t.Date.Month == today.Month).ToList();
+    var todayBirthday = inThisMoth.Where(t => t.Date.Day == today.Day).ToList();
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Сегодня
+            </th>         
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in todayBirthday)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                В этом месяце
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in inThisMoth)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
