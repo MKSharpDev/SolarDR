@@ -1,9 +1,5 @@
 ﻿using FluentScheduler;
 using SolarDR.MailSender;
-using System.Collections.Specialized;
-using System.Net;
-using System.Text;
-
 
 
 const string apiAdres = "https://localhost:7249/api/persons";
@@ -23,6 +19,7 @@ Options options = new Options() {Email = email };
 DRSorter sorter = new DRSorter();
 
 EmailSender emailSender = new EmailSender(options, sorter, worker);
+await emailSender.SendMessageAsync();
 while (true)
 {
     
