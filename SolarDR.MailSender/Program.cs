@@ -11,7 +11,7 @@ var email = Console.ReadLine();
 Console.WriteLine("Ваша почта:");
 Console.WriteLine(email);
 
-Console.WriteLine("Если почта не правильная - перезапустите программу!");
+Console.WriteLine("Если почта неправильная - перезапустите программу!");
 //TO DO 
 //Билдер который собирает Options
 
