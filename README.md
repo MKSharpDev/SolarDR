@@ -7,6 +7,8 @@ MVC можно запустить отдельно. - Home - Person - AddPerson 
 
 MailSender работает в связке с WebAPI. Почту указать в консоли, работает только с mail.ru
 
+Валидацию не делал.
+
 Докер композ в папке MVC.
 
 docker-compose up -d
