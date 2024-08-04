@@ -6,7 +6,7 @@ const string apiAdres = "https://localhost:7249/api/persons";
 
 APIWorker worker = new APIWorker(apiAdres);
 
-Console.WriteLine("Введите почту mail ru");
+Console.WriteLine("Введите почту mail.ru");
 var email = Console.ReadLine();
 Console.WriteLine("Ваша почта:");
 Console.WriteLine(email);
