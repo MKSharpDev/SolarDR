@@ -1,0 +1,6 @@
+@SolarDR.WebAPI_HostAddress = http://localhost:5170
+
+GET {{SolarDR.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
