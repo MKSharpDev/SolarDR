@@ -13,7 +13,7 @@ Console.WriteLine(email);
 
 Console.WriteLine("Если почта неправильная - перезапустите программу!");
 //TO DO 
-//Билдер который собирает Options
+//Билдер который собирает Options + в Options время срабатывания отправки почты
 
 Options options = new Options() {Email = email };
 
